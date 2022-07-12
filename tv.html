@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let tv1 = new Television(null,2,true)
+    let remote1 = new Remote();
+    class Television {
+        constructor(channel,volume,status) {
+            this.channel = channel;
+            this.volume = volume;
+            this.status = status;
+        }
+        getChannel(){
+            return this.channel;
+        }
+        setChannel(channel){
+            this.channel = channel;
+        }
+        getVolume(){
+            return this.volume;
+        }
+        setVolume(volume){
+            this.volume = volume;
+        }
+        getStatus(){
+            return this.status;
+        }
+        setStatus(status){
+            this.status = status;
+        }
+    }
+    class Remote {
+        onOff(tv){
+            tv.setStatus(!tv.getStatus())
+        }
+        channelReset(tv,channel){
+            if (tv.getStatus()){
+                tv.setChannel(channel)
+            }else {
+                console.log(" bat tv len");
+            }
+        }
+        volumeReset(tv){
+            if(tv.getStatus()){
+                if (tv.getVolume()>=3){
+                    return "max"
+                }else {
+                    tv.setVolume(tv.getVolume()+1)
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
